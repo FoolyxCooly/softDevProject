@@ -60,6 +60,7 @@ public class App {
             System.out.println("ERROR " + e.getLocalizedMessage());
         } finally {
         }
+        //will use the change table section
         Change ch1 = new Change();
         try (Scanner myObj = new Scanner(System.in)) {
             System.out.println(" would you like to add to the employee table?");
@@ -73,5 +74,18 @@ public class App {
             System.out.println("ERROR " + e.getLocalizedMessage());
         } finally {
         }
+        //will use the update section
+        Updates up1 = new Updates();
+        // WILL NEED to check what too update from data to payroll
+        int empid=5;
+        int salary=30000;
+        up1.updatePayroll(salary);
+        up1.updateEmployee(empid);
+
+        // will search for employee with any question it gives
+        // class will have multiple questions potential to find employee
+        Search ser1 = new Search();
+        ser1.searchEmployee();
+        
     }
 }
