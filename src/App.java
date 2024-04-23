@@ -5,22 +5,33 @@ public class App {
         
         System.out.println("Here are employee reports!");
         System.out.println("Type which option to use the function");
-        String op1="Search";
-        String op2="Update";
-        String op3="Add Employee";
-        String op4="Show Employees";
-        String op5="Payroll";
+        String op1="|Search|";
+        String op2="|Update|";
+        String op3="|Add Employee|";
+        String op4="|Show Employees|";
+        String op5="|Payroll|";
 
         System.out.println(op1+" "+op2+" "+op3+" "+op4+" "+op5);
         Scanner myObj = new Scanner(System.in);
         String userResponse = myObj.nextLine();
-        
+        int userResNum;
         boolean finished=true;
         while(finished){
             if(userResponse.equalsIgnoreCase(op1)){
-                System.out.println("Search: EmpID, EmpSNN, EmpName, EmpEmail, EmpSalary or EmpHireDate ?");
-                userResponse=myObj.nextLine();
-                
+
+            /*this line will be setting up search class */
+                Search searchEmp= new Search();
+                boolean searchFinished= true;
+                while(searchFinished){
+
+                    System.out.println("Search: EmpID, EmpSNN, EmpName, EmpEmail, EmpSalary or EmpHireDate ?");
+                    userResponse=myObj.nextLine();
+                    if(userResponse.equalsIgnoreCase("EmpID")){
+                        System.out.println("What is the ID? ");
+                        userResNum=myObj.nextInt();
+                        searchEmp.getEmpID(userResNum);
+                    }
+                }
             }
         }
         /* 
