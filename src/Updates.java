@@ -1,10 +1,19 @@
 import java.sql.*;
+
 public class Updates {
-    void updatePayroll(int salary){
+    public void updateEmpSNN(){
 
     }
-    void updateEmployee(int empid){
+    public void updateEmpName(){
 
     }
-    
+    public void updateEmpEmail(){
+        
+    }
+    public void updateEmpSalary(){
+
+    }
+    public void updateEmpHireDate(){
+
+    }
 }
