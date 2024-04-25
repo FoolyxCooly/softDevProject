@@ -1,4 +1,3 @@
-import java.sql.*;
 import java.util.Scanner;
 public class App {
     public static void main(String[] args) {
@@ -10,8 +9,9 @@ public class App {
         String op3="|Add Employee|";
         String op4="|Show Employees|";
         String op5="|Payroll|";
+        String op6="|Exit|";
 
-        System.out.println(op1+" "+op2+" "+op3+" "+op4+" "+op5);
+        System.out.println(op1+" "+op2+" "+op3+" "+op4+" "+op5+" "+ op6);
         Scanner myObj = new Scanner(System.in);
         String userResponse = myObj.nextLine();
         int userResNum;
@@ -30,94 +30,54 @@ public class App {
                         System.out.println("What is the ID? ");
                         userResNum=myObj.nextInt();
                         searchEmp.getEmpID(userResNum);
+                    }else if(userResponse.equalsIgnoreCase("EmpSNN")){
+                        System.out.println("What is the SNN? ");
+                        userResNum=myObj.nextInt();
+                        searchEmp.getEmpSNN(userResNum);
+
+                    }else if(userResponse.equalsIgnoreCase("EmpName")){
+                        System.out.println("What is the First name? ");
+                        String fNameIn=myObj.nextLine();
+                        System.out.println("What is the Last name? ");
+                        String LNameIn=myObj.nextLine();
+
+                        searchEmp.getEmpName(fNameIn, LNameIn);
+
+                    }else if(userResponse.equalsIgnoreCase("EmpEmail")){
+                        System.out.println("What is the employee email? ");
+                        userResponse=myObj.nextLine();
+                        searchEmp.getEmpEmail(userResponse);
+
+                    }else if(userResponse.equalsIgnoreCase("EmpSalary")){
+                        System.out.println("What is the employee salary? ");
+                        userResNum=myObj.nextInt();
+                        searchEmp.getEmpSalary(userResNum);
+
+                    }else if(userResponse.equalsIgnoreCase("EmpHireDate")){
+                        System.out.println("What is the employee hire date? ");
+                        userResponse=myObj.nextLine();
+                        searchEmp.getEmpHireDate(userResponse);
+
                     }
                 }
-            }
-        }
-        /* 
-        String url = "jdbc:mysql://localhost:3306/employeedata";
-        String user = "root";
-        String password = "";
-        StringBuilder output = new StringBuilder("");
-        String sqlcommand = "SELECT e.Fname, e.Lname, e.email, jt.job_title, e.empid " +
-        "FROM employees e  " +
-        "JOIN employee_job_titles ejt ON e.empid = ejt.empid " +
-        "JOIN job_titles jt ON ejt.job_title_id = jt.job_title_id  " +
-        "ORDER BY e.empid ; ";
-
-        try (Connection myConn = DriverManager.getConnection(url, user, password)) {
-            Statement myStmt = myConn.createStatement();
-
-            output.append("\nEMPLOYEE PAYROLL REPORT by Job title \n");
-            ResultSet myRS = myStmt.executeQuery(sqlcommand);
-            Payroll p1 = new Payroll();
-            while (myRS.next()) {
-                output.append("Name= " + myRS.getString("e.Fname") + " " + myRS.getString("e.Fname") + "\t");
-                output.append("Title=" + myRS.getString("jt.job_title") + "     " + myRS.getString("e.email") + "\n");
-                System.out.print(output.toString());
-                output.setLength(0);
-
-                output.append(p1.getPayByMonth(myRS.getInt("e.empid"), myConn));
-               // getPayroll(myRS.getInt("e.empid"), myConn);
                 
-            }
-            myConn.close();
-        } catch (Exception e) {
-            System.out.println("ERROR " + e.getLocalizedMessage());
-        } finally {
-        }
-        String sqlcommand1 = "SELECT e.Fname, e.Lname, e.email, d.Name, e.empid " +
-        "FROM employees e  " +
-        "JOIN employee_division ediv ON e.empid = ediv.empid " +
-        "JOIN division d ON ediv.div_ID = d.ID " +
-        "ORDER BY e.empid ; ";
 
-        try (Connection myConn = DriverManager.getConnection(url, user, password)) {
-            Statement myStmt1 = myConn.createStatement();
-            output.append("\nEMPLOYEE PAYROLL REPORT by Division \n");
-            ResultSet myRS = myStmt1.executeQuery(sqlcommand1);
-            Payroll p1 = new Payroll();
-            while (myRS.next()) {
-                output.append("Name= " + myRS.getString("e.Fname") + " " + myRS.getString("e.Lname") + "\t");
-                output.append("Division=" + myRS.getString("d.Name") + "     " + myRS.getString("e.email") + "\n");
-                System.out.print(output.toString());
-                output.setLength(0);
-
-                output.append(p1.getPayByMonth(myRS.getInt("e.empid"), myConn));
-               // getPayroll(myRS.getInt("e.empid"), myConn);
+            }else if (userResponse.equalsIgnoreCase(op2)) {
                 
+            }else if (userResponse.equalsIgnoreCase(op3)) {
+                
+            }else if (userResponse.equalsIgnoreCase(op4)) {
+                
+            }else if (userResponse.equalsIgnoreCase(op5)) {
+                
+            }else if (userResponse.equalsIgnoreCase(op6)) {
+                
+            } else {
+                System.out.println("Please choose one of the options!");
             }
-            myConn.close();
-        } catch (Exception e) {
-            System.out.println("ERROR " + e.getLocalizedMessage());
-        } finally {
-        }
-        //will use the change table section
-        Change ch1 = new Change();
-        try (Scanner myObj = new Scanner(System.in)) {
-            System.out.println(" would you like to add to the employee table?");
-            String userResponse = myObj.nextLine();
-            if(userResponse.equals("yes")|| userResponse.equals("Yes")){
-                System.out.println("What column name would you like to add?");
-                userResponse= myObj.nextLine();
-                ch1.changeTable(userResponse);
-            }
-        }catch (Exception e) {
-            System.out.println("ERROR " + e.getLocalizedMessage());
-        } finally {
-        }
-        //will use the update section
-        Updates up1 = new Updates();
-        // WILL NEED to check what too update from data to payroll
-        int empid=5;
-        int salary=30000;
-        up1.updatePayroll(salary);
-        up1.updateEmployee(empid);
 
-        // will search for employee with any question it gives
-        // class will have multiple questions potential to find employee
-        Search ser1 = new Search();
-        ser1.searchEmployee();
-        */        
+        
+
+        }myObj.close();
     }
 }
