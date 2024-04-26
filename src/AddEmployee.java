@@ -19,5 +19,25 @@ public class AddEmployee {
         } finally {
         }
     }
+    /**
+     * 
+     */
+    public void addingColumn(){
+        String sqlcom1=" IF COL_LENGTH('employees','snn') IS NOT NULL"+
+        "   PRINT 'Column exists' "+
+        "ELSE "+
+        "   ALTER TABLE employees "+ 
+        "   ADD snn INT(9) ;";
+
+        try (Connection myConn = DriverManager.getConnection(url, user, password)) {
+            Statement myStmt = myConn.createStatement();
+
+            myStmt.executeUpdate(sqlcom1);
+            myConn.close();
+        } catch (Exception e) {
+            System.out.println("ERROR " + e.getLocalizedMessage());
+        } finally {
+        }
+    }
 
 }

@@ -5,8 +5,20 @@ public class Updates {
     String user = "root";
     String password = "";
 
-    public void updateEmpSNN(int empID){
+    public void updateEmpSNN(int empID,int empSnn){
+        String sqlcom1="UPDATE employees"+
+        "SET snn = "+ empSnn +
+        "WHERE empid = "+empID+" ; ";
+        try (Connection myConn = DriverManager.getConnection(url, user, password)) {
+            Statement myStmt = myConn.createStatement();
 
+            myStmt.executeUpdate(sqlcom1);
+        
+            myConn.close();
+        } catch (Exception e) {
+            System.out.println("ERROR " + e.getLocalizedMessage());
+        } finally {
+        }
     }
     public void updateEmpName(int empID, String empfName, String emplName){
         String sqlcom1="UPDATE employees"+

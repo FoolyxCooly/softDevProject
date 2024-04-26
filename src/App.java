@@ -1,7 +1,10 @@
 import java.util.Scanner;
 public class App {
     public static void main(String[] args) {
-        
+        System.out.println("We will be adding the column to the Employee table");
+        AddEmployee addEmp = new AddEmployee();
+        addEmp.addingColumn();
+
         System.out.println("Here are employee reports!");
         System.out.println("Type which option to use the function");
         String op1="|Search|";
