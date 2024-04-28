@@ -77,6 +77,9 @@ public class App {
                 
             } else {
                 System.out.println("Please choose one of the options!");
+                System.out.println(op1 + " " + op2 + " " + op3 + " " + op4 + " " + op5 + " " + op6);
+                userResponse = myObj.nextLine();
+                continue;
             }
 
         
