@@ -14,7 +14,7 @@ public class App {
         String op5="|Payroll|";
         String op6="|Exit|";
 
-        System.out.println(op1+" "+op2+" "+op3+" "+op4+" "+op5+" "+ op6);
+        System.out.println(op1 + " " + op2 + " " + op3 + " " + op4 + " " + op5 + " " + op6);
         Scanner myObj = new Scanner(System.in);
         String userResponse = myObj.nextLine();
         int userResNum;
@@ -74,7 +74,7 @@ public class App {
             }else if (userResponse.equalsIgnoreCase(op6)) {
                 
             } else {
-                System.out.println("Please choose one of the options!");
+                System.out.println("Oops that isn't a valid section. Please choose one of the options! Type it out like ex: |Search|");
                 System.out.println(op1 + " " + op2 + " " + op3 + " " + op4 + " " + op5 + " " + op6);
                 userResponse = myObj.nextLine();
                 continue;

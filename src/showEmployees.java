@@ -2,7 +2,7 @@ import java.sql.*;
 public class showEmployees {
     String url = "jdbc:mysql://localhost:3306/employeedata";
     String user = "root";
-    String password = "";
+    String password = "Ap$129212";
     public void displayEmp(){
         String sqlcom1= "SELECT * FROM employees "+
         "ORDER BY empid ; ";
