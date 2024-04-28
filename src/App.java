@@ -1,3 +1,5 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.util.Scanner;
 public class App {
     public static void main(String[] args) {
@@ -108,6 +110,7 @@ public class App {
                     String continueUpdate = myObj.nextLine();
                     if (!continueUpdate.equalsIgnoreCase("yes")) {
                         searchFinished = false;
+                        break;
                     }
                 }
                 
@@ -115,10 +118,33 @@ public class App {
                 
             }else if (userResponse.equalsIgnoreCase(op4)) {
                 
-            }else if (userResponse.equalsIgnoreCase(op5)) {
-                
-            }else if (userResponse.equalsIgnoreCase(op6)) {
-                
+            } else if (userResponse.equalsIgnoreCase(op5)) {
+                Payroll payroll = new Payroll();
+                boolean searchFinished = true;
+                while (searchFinished) {
+                    System.out.println("Enter employee ID to view payroll information:");
+                    int empID = myObj.nextInt();
+                    myObj.nextLine(); 
+                    String url = "jdbc:mysql://localhost:3306/employeedata";
+                    String user = "root";
+                    String password = "";
+
+                    try (Connection myConn = DriverManager.getConnection(url, user, password)) {
+                        payroll.getPayByMonth(empID, myConn);
+                    } catch (Exception e) {
+                        System.out.println("ERROR " + e.getLocalizedMessage());
+                    };
+            
+                    System.out.println("Do you want to view payroll for another employee? (yes/no)");
+                    String continuePayroll = myObj.nextLine();
+                    if (!continuePayroll.equalsIgnoreCase("yes")) {
+                        searchFinished = false;                        
+                    }
+                }
+            }             
+            else if (userResponse.equalsIgnoreCase(op6)) {
+                System.out.println("Exiting the program...");
+                finished = false;
             } else {
                 System.out.println("Oops that isn't a valid section. Please choose one of the options! Type it out like ex: |Search|");
                 System.out.println(op1 + " " + op2 + " " + op3 + " " + op4 + " " + op5 + " " + op6);

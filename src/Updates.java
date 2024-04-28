@@ -3,7 +3,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 public class Updates {
-    String url = "jdbc:mysql://localhost:3306/employeedata";
+    String url = "jdbc:mysql://localhost:3306/employeeData";
     String user = "root";
     String password = "";
 
