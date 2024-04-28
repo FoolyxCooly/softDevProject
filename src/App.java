@@ -64,6 +64,52 @@ public class App {
                 
 
             }else if (userResponse.equalsIgnoreCase(op2)) {
+                Updates updates = new Updates();
+                boolean searchFinished = true;
+                while (searchFinished) {
+                    System.out.println("Update: EmpName, EmpEmail, EmpSalary, or EmpHireDate ?");
+                    userResponse = myObj.nextLine();
+                    if (userResponse.equalsIgnoreCase("EmpName")) {
+                        System.out.println("what is the EmpID? ");
+                        int empID = myObj.nextInt();
+                        myObj.nextLine();
+                        System.out.println("What is the new First Name? ");
+                        String fNameInNew = myObj.nextLine();
+                        System.out.println("What is the new Last Name?");
+                        String lNameInNew = myObj.nextLine();
+                        
+                        updates.updateEmpName(empID, fNameInNew, lNameInNew);
+                        
+                    } else if (userResponse.equalsIgnoreCase("EmpEmail")) {
+                        System.out.println("What is the EmpID? ");
+                        int empID = myObj.nextInt();
+                        myObj.nextLine();
+                        System.out.println("Enter new email: ");
+                        String newEmail = myObj.nextLine();
+                        updates.updateEmpEmail(empID, newEmail);
+                    } else if (userResponse.equalsIgnoreCase("EmpSalary")) {
+                        System.out.println("What is the EmpID? ");
+                        int empID = myObj.nextInt();
+                        myObj.nextLine();
+                        System.out.println("Enter new salary: ");
+                        String newSalary = myObj.nextLine();
+                        updates.updateEmpSalary(empID, newSalary);
+                    } else if (userResponse.equalsIgnoreCase("EmpHireDate")) {
+                        System.out.println("What is the EmpID? ");
+                        int empID = myObj.nextInt();
+                        myObj.nextLine();
+                        System.out.println("Enter new hire date (Format: YYYY-MM-DD): ");
+                        String newHireDate = myObj.nextLine();
+                        updates.updateEmpHireDate(empID, newHireDate);
+                    } else {
+                        System.out.println("Invalid option. Please choose from EmpSSN, EmpName, EmpEmail, EmpSalary, or EmpHireDate.");
+                    }
+                    System.out.println("Do you want to update more information? (yes/no)");
+                    String continueUpdate = myObj.nextLine();
+                    if (!continueUpdate.equalsIgnoreCase("yes")) {
+                        searchFinished = false;
+                    }
+                }
                 
             }else if (userResponse.equalsIgnoreCase(op3)) {
                 
