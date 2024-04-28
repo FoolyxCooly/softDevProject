@@ -27,40 +27,38 @@ public class App {
                 boolean searchFinished= true;
                 while(searchFinished){
 
-                    System.out.println("Search: EmpID, EmpSNN, EmpName, EmpEmail, EmpSalary or EmpHireDate ?");
+                    System.out.println("Search: EmpID, EmpName, EmpEmail, EmpSalary, or EmpHireDate ?");
                     userResponse=myObj.nextLine();
                     if(userResponse.equalsIgnoreCase("EmpID")){
                         System.out.println("What is the ID? ");
                         userResNum=myObj.nextInt();
                         searchEmp.getEmpID(userResNum);
-                    }else if(userResponse.equalsIgnoreCase("EmpSNN")){
-                        System.out.println("What is the SNN? ");
-                        userResNum=myObj.nextInt();
-                        searchEmp.getEmpSNN(userResNum);
+                    }
 
-                    }else if(userResponse.equalsIgnoreCase("EmpName")){
+                    else if(userResponse.equalsIgnoreCase("EmpName")){
                         System.out.println("What is the First name? ");
                         String fNameIn=myObj.nextLine();
                         System.out.println("What is the Last name? ");
                         String LNameIn=myObj.nextLine();
-
                         searchEmp.getEmpName(fNameIn, LNameIn);
-
-                    }else if(userResponse.equalsIgnoreCase("EmpEmail")){
+                    }
+                    
+                    else if(userResponse.equalsIgnoreCase("EmpEmail")){
                         System.out.println("What is the employee email? ");
                         userResponse=myObj.nextLine();
                         searchEmp.getEmpEmail(userResponse);
-
-                    }else if(userResponse.equalsIgnoreCase("EmpSalary")){
+                    }
+                    
+                    else if(userResponse.equalsIgnoreCase("EmpSalary")){
                         System.out.println("What is the employee salary? ");
                         userResNum=myObj.nextInt();
                         searchEmp.getEmpSalary(userResNum);
-
-                    }else if(userResponse.equalsIgnoreCase("EmpHireDate")){
-                        System.out.println("What is the employee hire date? ");
+                    }
+                    
+                    else if(userResponse.equalsIgnoreCase("EmpHireDate")){
+                        System.out.println("What is the employee hire date? (Format: YYYY-MM-DD)");
                         userResponse=myObj.nextLine();
                         searchEmp.getEmpHireDate(userResponse);
-
                     }
                 }
                 
