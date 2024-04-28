@@ -2,19 +2,19 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) {
         System.out.println("We will be adding the column to the Employee table");
-        AddEmployee addEmp = new AddEmployee();
-        addEmp.addingColumn();
+       // AddEmployee addEmp = new AddEmployee();
+       // addEmp.addingColumn();
 
         System.out.println("Here are employee reports!");
         System.out.println("Type which option to use the function");
-        String op1="|Search|";
-        String op2="|Update|";
-        String op3="|Add Employee|";
-        String op4="|Show Employees|";
-        String op5="|Payroll|";
-        String op6="|Exit|";
+        String op1="Search";
+        String op2="Update";
+        String op3="Add Employee";
+        String op4="Show Employees";
+        String op5="Payroll";
+        String op6="Exit";
 
-        System.out.println(op1+" "+op2+" "+op3+" "+op4+" "+op5+" "+ op6);
+        System.out.println("|"+op1+"| |"+op2+"| |"+op3+"| |"+op4+"| |"+op5+"| |"+ op6+"|");
         Scanner myObj = new Scanner(System.in);
         String userResponse = myObj.nextLine();
         int userResNum;
