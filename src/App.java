@@ -4,19 +4,19 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) {
         System.out.println("We will be adding the column to the Employee table");
-        AddEmployee addEmp = new AddEmployee();
-        addEmp.addingColumn();
+       // AddEmployee addEmp = new AddEmployee();
+       // addEmp.addingColumn();
 
         System.out.println("Here are employee reports!");
         System.out.println("Type which option to use the function");
-        String op1="|Search|";
-        String op2="|Update|";
-        String op3="|Add Employee|";
-        String op4="|Show Employees|";
-        String op5="|Payroll|";
-        String op6="|Exit|";
+        String op1="Search";
+        String op2="Update";
+        String op3="Add Employee";
+        String op4="Show Employees";
+        String op5="Payroll";
+        String op6="Exit";
 
-        System.out.println(op1 + " " + op2 + " " + op3 + " " + op4 + " " + op5 + " " + op6);
+        System.out.println("|"+op1+"| |"+op2+"| |"+op3+"| |"+op4+"| |"+op5+"| |"+ op6+"|");
         Scanner myObj = new Scanner(System.in);
         String userResponse = myObj.nextLine();
         int userResNum;
@@ -61,6 +61,14 @@ public class App {
                         System.out.println("What is the employee hire date? (Format: YYYY-MM-DD)");
                         userResponse=myObj.nextLine();
                         searchEmp.getEmpHireDate(userResponse);
+                    } else{
+                        System.out.println("Invalid option. Please choose from EmpName, EmpEmail, EmpSalary, or EmpHireDate.");
+                    }
+                    System.out.println("Do you want to add another employee? (yes/no)");
+                    String addAnother = myObj.nextLine();
+                    if (!addAnother.equalsIgnoreCase("yes")) {
+                        finished = false;
+                        break;
                     }
                 }
                 
@@ -103,20 +111,51 @@ public class App {
                         System.out.println("Enter new hire date (Format: YYYY-MM-DD): ");
                         String newHireDate = myObj.nextLine();
                         updates.updateEmpHireDate(empID, newHireDate);
-                    } else {
-                        System.out.println("Invalid option. Please choose from EmpSSN, EmpName, EmpEmail, EmpSalary, or EmpHireDate.");
+                    } else{
+                        System.out.println("Invalid option. Please choose from EmpName, EmpEmail, EmpSalary, or EmpHireDate.");
                     }
-                    System.out.println("Do you want to update more information? (yes/no)");
-                    String continueUpdate = myObj.nextLine();
-                    if (!continueUpdate.equalsIgnoreCase("yes")) {
-                        searchFinished = false;
+                    System.out.println("Do you want to add another employee? (yes/no)");
+                    String addAnother = myObj.nextLine();
+                    if (!addAnother.equalsIgnoreCase("yes")) {
+                        finished = false;
                         break;
                     }
                 }
                 
             }else if (userResponse.equalsIgnoreCase(op3)) {
-                
+                AddEmployee adding = new AddEmployee();
+            
+                while (true) {
+                    System.out.println("Enter new hire date (Format: YYYY-MM-DD): ");
+                    String newHireDate = myObj.nextLine();
+            
+                    System.out.println("Enter new salary: ");
+                    int newSalary = myObj.nextInt();
+                    myObj.nextLine();
+            
+                    System.out.println("What is the new First Name? ");
+                    String fNameInNew = myObj.nextLine();
+            
+                    System.out.println("What is the new Last Name?");
+                    String lNameInNew = myObj.nextLine();
+            
+                    System.out.println("Enter new email: ");
+                    String newEmail = myObj.nextLine();
+            
+                    adding.setEmployee(fNameInNew, lNameInNew, newEmail, newHireDate, newSalary);
+            
+                    System.out.println("Do you want to add another employee? (yes/no)");
+                    String addAnother = myObj.nextLine();
+                    if (!addAnother.equalsIgnoreCase("yes")) {
+                        finished = false;
+                        break;
+                    }
+                }
+
+        
             }else if (userResponse.equalsIgnoreCase(op4)) {
+                showEmployees show = new showEmployees();
+                show.displayEmp();
                 
             } else if (userResponse.equalsIgnoreCase(op5)) {
                 Payroll payroll = new Payroll();
@@ -135,18 +174,19 @@ public class App {
                         System.out.println("ERROR " + e.getLocalizedMessage());
                     };
             
-                    System.out.println("Do you want to view payroll for another employee? (yes/no)");
-                    String continuePayroll = myObj.nextLine();
-                    if (!continuePayroll.equalsIgnoreCase("yes")) {
-                        searchFinished = false;                        
+                    System.out.println("Do you want to add another employee? (yes/no)");
+                    String addAnother = myObj.nextLine();
+                    if (!addAnother.equalsIgnoreCase("yes")) {
+                        finished = false;
+                        break;
                     }
                 }
-            }             
+            }
             else if (userResponse.equalsIgnoreCase(op6)) {
-                System.out.println("Exiting the program...");
+                System.out.println("Goodbye!");
                 finished = false;
             } else {
-                System.out.println("Oops that isn't a valid section. Please choose one of the options! Type it out like ex: |Search|");
+                System.out.println("Oops that isn't a valid section. Please choose one of the options! Type it out like ex: Search");
                 System.out.println(op1 + " " + op2 + " " + op3 + " " + op4 + " " + op5 + " " + op6);
                 userResponse = myObj.nextLine();
                 continue;
